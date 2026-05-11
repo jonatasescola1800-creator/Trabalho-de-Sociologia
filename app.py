@@ -100,7 +100,7 @@ def listar_pendentes():
     
     html = "<h1>Cães esperando aprovação:</h1>"
     for p in pendentes:
-        html += f"<p>{p['nome']} - <a href='/admin/aprovar/{p['id']}'>Aprovar Agora</a></p>"
+        html += f"<p>{p['nome']} - {p['idade']} - {p['sexo']} - {p['porte']} - {p['descricao']} - <a href='/admin/aprovar/{p['id']}'>Aprovar Agora</a></p>"
     return html
 
 @app.route("/admin/aprovar/<int:id>")
