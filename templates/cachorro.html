@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - {{ dog.nome }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="perfil">
+    <div class="perfil-img-container">
+        <img class="perfil-img" src="{{ url_for('static', filename='imagens/' + dog.imagem) }}" alt="{{ dog.nome }}">
+    </div>
+
+    <div class="perfil-content">
+        <h1>{{ dog.nome }}</h1>
+        
+        <span class="status 
+            {% if dog.status == 'Disponível' %}
+                disponivel
+            {% else %}
+                adotado
+            {% endif %}
+        ">
+            {{ dog.status }}
+        </span>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <span class="label">Idade</span>
+                <span class="value">{{ dog.idade }}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Vacina</span>
+                <span class="value">{{ dog.vacina }}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Vermífugo</span>
+                <span class="value">{{ dog.vermifugo }}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Castrado</span>
+                <span class="value">{{ dog.castrado }}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Sexo</span>
+                <span class="value">{{ dog.sexo }}</span>
+            </div>
+            <div class="info-item">
+                <span class="label">Porte</span>
+                <span class="value">{{ dog.porte }}</span>
+            </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+        <div class="descricao">
+            <h3>Conheça a história de {{ dog.nome }}:</h3>
+            <p>{{ dog.descricao }}</p>
+        </div>
+
+        <div class="acoes-mobile-sticky">
+            {% if dog.status == "Disponível" %}
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeItJB35wnElWKNYVKkf5vnYyrNAiBd7c5c6GhHXIBOi_1F2w/viewform?usp=pp_url&entry.2005620554={{ dog.nome | urlencode }}" 
+                   target="_blank" class="botao-adotar">
+                   🐾 Quero Adotar
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="acoes">
+            <a href="/" class="botao-voltar">⬅ Voltar para a lista</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

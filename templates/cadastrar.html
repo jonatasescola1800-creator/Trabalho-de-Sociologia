@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Cadastrar Cãozinho</title>
+</head>
+<body>
+    <div class="perfil">
+        <div class="perfil-content">
+            <h1>Sugerir um Cãozinho</h1>
+            <p>Preencha os dados abaixo. Ele passará por uma análise antes de subir no site.</p>
+            
+            <form action="/enviar-cachorro" method="POST" enctype="multipart/form-data">
+                <input type="text" name="nome" placeholder="Nome do cão" required>
+                <input type="text" name="idade" placeholder="Ex: 2 anos">
+                <input type="text" name="sexo" placeholder="Macho ou Fêmea">
+                <input type="text" name="porte" placeholder="Pequeno, Médio ou Grande">
+                <textarea name="descricao" placeholder="Conte um pouco da história dele..." rows="5"></textarea>
+                
+                <label>Foto do cãozinho:</label>
+                <input type="file" name="imagem" accept="image/*" required>
+                
+                <button type="submit" class="botao-adotar" style="border:none; width:100%;">Enviar para Análise</button>
+            </form>
+            <a href="/" class="botao-voltar">Voltar</a>
+        </div>
+    </div>
+</body>
+</html>

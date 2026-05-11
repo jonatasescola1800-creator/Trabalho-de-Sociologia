@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>IFPA Dogs | Adoção Responsável</title>
+</head>
+<body>
+
+    <header class="header">
+        <img src="{{url_for('static', filename='imagens/logo.png')}}" alt="Logo IFPA Dogs">
+        <h1>IFPA Dogs</h1>
+        <a href="/cadastrar" class="botao-cadastrar-header">➕ Cadastrar Cãozinho</a>
+    </header>
+
+    <div class="intro-text">
+        <p>Projeto desenvolvido para facilitar a adoção responsável dos animais que vivem no nosso campus. Encontre seu novo melhor amigo!</p>
+    </div>
+
+    <section>
+        <form method="GET">
+            <input type="text" name="busca" placeholder="Nome do cãozinho...">
+            
+            <select name="status">
+                <option value="">Todos os status</option>
+                <option value="Disponível">Disponíveis</option>
+                <option value="Adotado">Adotados</option>
+            </select>
+
+            <button type="submit">Filtrar</button>
+        </form>
+    </section>
+
+    <main class="container">
+        {% for cachorro in cachorros %}
+            <article class="card">
+                <div class="card-img-wrapper">
+                    <img src="{{ url_for('static', filename='imagens/' + cachorro.imagem) }}" alt="{{ cachorro.nome }}">
+                </div>
+
+                <h2>{{ cachorro.nome }}</h2>
+                
+                <span class="status {{ 'disponivel' if cachorro.status == 'Disponível' else 'adotado' }}">
+                    {{ cachorro.status }}
+                </span>
+
+                <p style="color: #666; font-size: 0.9rem;">Idade: <strong>{{ cachorro.idade }}</strong></p>
+
+                <a href="/cachorro/{{ cachorro.id }}">Ver Perfil Completo</a>
+            </article>
+        {% endfor %}
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary: #4facfe;
+    --secondary: #00f2fe;
+    --bg-body: #f8f9fa;
+    --text-dark: #333;
+    --white: #ffffff;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Essencial para não quebrar o layout no mobile */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--white);
+    padding: 40px 20px;
+    border-radius: 0 0 30px 30px;
+    text-align: center;
+}
+
+.header img {
+    width: 200px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+.header h1 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem); 
+}
+
+.intro-text {
+    padding: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    color: #666;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+input, select {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-family: inherit;
+}
+
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);;
+    text-align: center;
+    padding-bottom: 20px;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.6s;
+}
+
+.card:hover::before {
+    transform: scale(1);
+}
+
+.card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    border-color: var(--primary);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card h2 {
+    margin: 15px 0 5px;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.disponivel { background: #d4edda; color: #155724; }
+.adotado { background: #f8d7da; color: #721c24; }
+
+.card a {
+    text-decoration: none;
+    background: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+@media (max-width: 600px) {
+    form {
+        flex-direction: column; 
+    }
+    
+    input, select, button {
+        width: 100%;
+    }
+
+    .header {
+        padding: 30px 10px;
+    }
+
+    .acoes-mobile-sticky {
+        position: -webkit-sticky; 
+        position: sticky;
+        bottom: 20px; 
+        z-index: 999; 
+        padding: 10px 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .acoes-mobile-sticky .botao-adotar {
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(79, 172, 254, 0.4);
+        border-radius: 50px;
+        padding: 18px;
+        font-size: 1.1rem;
+    }
+}
+
+.perfil {
+    max-width: 600px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+    padding: 0;
+}
+
+.perfil-img-container {
+    height: 350px;
+    overflow: hidden;
+}
+
+.perfil-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.perfil-content {
+    padding: 30px;
+    text-align: center;
+}
+
+.perfil-content h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.info-item {
+    background: #fcfcfc;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #f0f0f0;
+}
+
+.info-item .label {
+    display: block;
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.info-item .value {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4facfe;
+}
+
+.descricao {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.descricao h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.descricao p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.acoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.botao-adotar {
+    background: #4facfe;
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.botao-adotar:hover {
+    background: #00c6ff;
+    transform: scale(1.02);
+}
+
+.botao-voltar {
+    color: #999;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.botao-voltar:hover {
+    color: #4facfe;
+}
+
+@media (max-width: 600px) {
+    .perfil {
+        margin: 0;
+        border-radius: 0;
+    }
+    
+    .perfil-img-container {
+        height: 250px;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card a {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.botao-cadastrar-header {
+    background: rgba(255, 255, 255, 0.2); /* Fundo branco transparente */
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid white;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.botao-cadastrar-header:hover {
+    background: white;
+    color: var(--primary);
+}
